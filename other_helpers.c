@@ -8,15 +8,20 @@
 
 int reverse(char s[])
 {
-int len = 0;
+int len;
+int start;
+int end;
+char temp;
+
+len = 0;
 
 while (s[len] != '\0')
 {
 len++;
 }
 
-int start = 0, end = len - 1;
-char temp;
+start = 0;
+end = len - 1;
 
 while (start < end)
 {
@@ -37,8 +42,12 @@ return (len);
 */
 int itoa(int n, char s[])
 {
-int i = 0;
-int sign = n;
+int i;
+int sign;
+int len;
+
+i = 0;
+sign = n;
 
 if (sign < 0)
 n = -n;
@@ -52,7 +61,7 @@ s[i++] = '-';
 }
 s[i] = '\0';
 
-int len = reverse(s);
+len = reverse(s);
 
 return (len);
 }

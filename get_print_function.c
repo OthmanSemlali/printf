@@ -9,7 +9,9 @@
 */
 int (*get_print_func(char s, print_handler_t handls[], int handls_c))(va_list)
 {
-for (int i = 0; i < handls_c; i++)
+int i;
+
+for (i = 0; i < handls_c; i++)
 {
 if (handls[i].spec == s)
 {

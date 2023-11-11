@@ -6,8 +6,11 @@
 */
 int print_str(va_list val)
 {
-char *str = va_arg(val, char *);
-int i = 0;
+char *str;
+int i;
+
+str = va_arg(val, char *);
+i = 0;
 
 while (str[i] != '\0')
 {
@@ -24,7 +27,9 @@ return (i);
 */
 int print_char(va_list args)
 {
-char c = va_arg(args, int);
+char c;
+
+c = va_arg(args, int);
 
 write(1, &c, 1);
 return (1);
@@ -37,8 +42,10 @@ return (1);
 */
 int print_percent(va_list args)
 {
+char c;
+
 (void)args;
-char c = '%';
+c = '%';
 
 write(1, &c, 1);
 return (1);
@@ -53,11 +60,13 @@ return (1);
 */
 int print_int(va_list args)
 {
-int i = va_arg(args, int);
+int i, j, count;
 char buffer[50];
-int count = itoa(i, buffer);
 
-for (int j = 0; j < count; j++)
+i = va_arg(args, int);
+count = itoa(i, buffer);
+
+for (j = 0; j < count; j++)
 {
 write(1, &buffer[j], 1);
 }

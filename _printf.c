@@ -7,25 +7,26 @@
 
 int _printf(const char *format, ...)
 {
+        print_handler_t handls[] = {
+                {'c', print_char},
+                {'s', print_str},
+                {'d', print_int},
+                {'i', print_int},
+                {'%', print_percent}
+        };
+	int handls_c = sizeof(handls) / sizeof(print_handler_t);
+	int count_chars_printed;
+	int (*handler)(va_list);
 	va_list args;
 
 	va_start(args, format);
-	print_handler_t handls[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'d', print_int},
-		{'i', print_int},
-		{'%', print_percent}
-	};
-	int handls_c = sizeof(handls) / sizeof(print_handler_t);
-	int count_chars_printed = 0;
-
+	count_chars_printed = 0;
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			int (*handler)(va_list) = get_print_func(*format, handls, handls_c);
+			handler = get_print_func(*format, handls, handls_c);
 
 			if (handler != NULL)
 			{
