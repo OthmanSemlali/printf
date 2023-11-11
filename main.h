@@ -11,6 +11,7 @@ int print_char(va_list args);
 int print_str(va_list args);
 int print_int(va_list args);
 int print_percent(va_list args);
+int print_binary(va_list val);
 /**
  * struct print_handler - Struct print_handler
  * @spec: The spec

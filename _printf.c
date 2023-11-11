@@ -12,7 +12,9 @@ int _printf(const char *format, ...)
 		{'s', print_str},
 		{'d', print_int},
 		{'i', print_int},
-		{'%', print_percent}
+		{'%', print_percent},
+		{'b', print_binary},
+		{'\0', NULL}
 	};
 	int handls_c = sizeof(handls) / sizeof(print_handler_t);
 	int count_chars_printed;

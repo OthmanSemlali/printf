@@ -73,3 +73,34 @@ write(1, &buffer[j], 1);
 return (count);
 }
 
+/**
+ * print_binary - prints a binary number
+ * @val: binary number to print
+ * Return: number of characters printed
+*/
+
+int print_binary(va_list val)
+{
+	unsigned int num;
+	char buffer[33];
+	int i;
+	int count;
+
+	num = va_arg(val, unsigned int);
+	i = 31;
+	count = 0;
+
+	while (num)
+	{
+		buffer[i--] = (num & 1) + '0';
+		num >>= 1;
+	}
+	i++;
+	while (i < 32)
+	{
+		write(1, &buffer[i], 1);
+		i++;
+		count++;
+	}
+	return (count);
+}
