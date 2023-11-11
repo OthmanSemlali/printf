@@ -1,41 +1,30 @@
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
+#include <stdio.h>
+
 /**
- * _printf - produces output according to a format
- * @format: format
- * Return: number of chars printed
+ * _printf - prints a string
+ * @format: string to print
+ * Return: number of characters printed
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
+
+	va_start(args, format);
+
 	int count_chars_printed = 0;
 
-	if (format == NULL)
-		return (-1);
-	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
+			int (*handler)(va_list) = get_print_func(*format);
+
+			if (handler != NULL)
 			{
-				case 'c':
-					{
-						count_chars_printed += print_char(va_arg(args, int));
-						break;
-					}
-				case 's':
-					{
-						count_chars_printed += print_str(va_arg(args, char *));
-						break;
-					}
-				case '%':
-					{
-						count_chars_printed += print_char('%');
-						break;
-					}
+				count_chars_printed += handler(args);
 			}
 		}
 		else
