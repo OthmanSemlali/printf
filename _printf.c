@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
-#include "helpers.c"
-
+#include "main.h"
 /**
  * _printf - produces output according to a format
  * @format: format
