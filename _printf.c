@@ -7,13 +7,13 @@
 
 int _printf(const char *format, ...)
 {
-        print_handler_t handls[] = {
-                {'c', print_char},
-                {'s', print_str},
-                {'d', print_int},
-                {'i', print_int},
-                {'%', print_percent}
-        };
+	print_handler_t handls[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int},
+		{'%', print_percent}
+	};
 	int handls_c = sizeof(handls) / sizeof(print_handler_t);
 	int count_chars_printed;
 	int (*handler)(va_list);
