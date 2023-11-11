@@ -4,7 +4,6 @@
 #include <stdarg.h>
 #include <unistd.h>
 int _printf(const char *format, ...);
-int (*get_print_func(char s))(va_list);
 int reverse(char s[]);
 int itoa(int n, char s[]);
 
@@ -25,4 +24,5 @@ typedef struct print_handler
 	int (*handler)(va_list);
 } print_handler_t;
 
+int (*get_print_func(char s, print_handler_t handls[], int hands_c))(va_list);
 #endif

@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
  * _printf - prints a string
  * @format: string to print
@@ -12,7 +10,14 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-
+	print_handler_t handls[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int},
+		{'%', print_percent}
+	};
+	int handls_c = sizeof(handls) / sizeof(print_handler_t);
 	int count_chars_printed = 0;
 
 	while (*format)
@@ -20,7 +25,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			int (*handler)(va_list) = get_print_func(*format);
+			int (*handler)(va_list) = get_print_func(*format, handls, handls_c);
 
 			if (handler != NULL)
 			{
