@@ -12,6 +12,11 @@ int print_binary(va_list args)
 	int i;
 	int count;
 
+	if (num == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
 	num = va_arg(args, unsigned int);
 	i = 31;
 	count = 0;
