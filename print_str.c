@@ -14,8 +14,7 @@ i = 0;
 
 if (str == NULL)
 {
-write(1, "(null)", 6);
-return (6);
+str = "(null)";
 }
 while (str[i] != '\0')
 {
