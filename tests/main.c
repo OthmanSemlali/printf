@@ -14,7 +14,7 @@ int main(void)
     unsigned int ui;
     /* void *addr;*/
 
-    int count = _printf("%s %c%c %% %d %i%%", "Hello",'H', 'W', 100, 100);
+    int count = _printf("%s %c%c %% %i %d \n", "Hello",'W', 'I', 1, 2);
     printf("%d\n", count);
 
     len = _printf("Let's try to printf a simple sentence.\n");
