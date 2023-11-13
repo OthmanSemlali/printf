@@ -13,9 +13,15 @@ int main(void)
     int len2;
     unsigned int ui;
     /* void *addr;*/
+    int count;
+    int c;
 
-    int count = _printf("%s %c%c %% %i %d \n", "Hello",'W', 'I', 1, 2);
+    count = _printf("%s %c%c %% %i %d \n", "Hello",'W', 'I', 1, 2);
     printf("%d\n", count);
+
+    c = _printf("%c\n", 'P');
+    printf("%d\n", c);
+
 
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");

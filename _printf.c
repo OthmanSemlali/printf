@@ -30,10 +30,6 @@ print_handler_t handls[] = {
 			if (handler != NULL)
 			{
 				count_chars_printed += handler(args);
-				/*if (handler != print_percent)
-				{
-					va_arg(args, int);
-				}*/
 			}
 		}
 		else
