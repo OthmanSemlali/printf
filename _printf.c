@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
 print_handler_t handls[] = {
 {'c', print_char}, {'s', print_str}, {'d', print_int}, {'i', print_int},
-{'%', print_percent}, {'b', print_binary}, {'u', print_unsigned},
+{'b', print_binary}, {'u', print_unsigned},
 {'x', print_hex_lower}, {'X', print_hex_upper}, {'o', print_octal},
 {'\0', NULL}
 };
@@ -25,6 +25,11 @@ print_handler_t handls[] = {
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '%')
+			{
+				write(1, "%", 1);
+				count_chars_printed++;
+			}
 			handler = get_print_func(*format, handls, handls_c);
 
 			if (handler != NULL)
