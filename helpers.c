@@ -47,16 +47,10 @@ int _itoa(int n, char s[])
 {
 int i;
 int sign;
-int len;
 
 i = 0;
 sign = n;
 
-if (n == -2147483648)
-{
-s[i++] = '8';
-n = 214748364;
-}
 if (sign < 0)
 n = -n;
 do {
@@ -68,7 +62,7 @@ s[i++] = '-';
 }
 s[i] = '\0';
 
-len = _reverse(s);
+int len = _reverse(s);
 
 return (len);
 }
@@ -114,7 +108,6 @@ s[i++] = digit < 10 ? digit + '0' : digit - 10 + (uppercase ? 'A' : 'a');
 s[i] = '\0';
 _reverse(s);
 }
-
 
 /**
  * itoa_octal - converts an integer to a string

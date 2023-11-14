@@ -1,7 +1,8 @@
 #include "main.h"
 
+
 /**
- * print_char - prints a character
+ * print_rot13 - prints a string in rot13
  * @args: list of arguments
  * @buffer: buffer to write to
  * @flags: flags for the format
@@ -12,27 +13,37 @@
  * from the string
  * Return: number of characters printed
 */
-
-int print_char(va_list args, char *buffer, char *flags,
+int print_rot13(va_list args, char *buffer, char *flags,
 		char length_modifier, int field_width, int precision)
 {
 (void)length_modifier;
-(void)precision;
-char c;
+char *str;
 int count;
-int plus_flag;
-int space_flag;
-int zero_flag;
-int minus_flag;
-int hash_flag;
+char c;
+int plus_flag, space_flag, zero_flag, minus_flag, hash_flag;
 
 parse_flags_and_set(flags, &plus_flag, &space_flag,
 		&zero_flag, &minus_flag, &hash_flag);
 
-c = va_arg(args, int);
+str = va_arg(args, char *);
 count = 0;
-
-buffer[count++] = c;
+while (str[count] != '\0' && (precision < 0 || count < precision))
+{
+c = str[count];
+if ((c >= 'A' && c <= 'M') || (c >= 'a' && c <= 'm'))
+{
+buffer[count] = c + 13;
+}
+else if ((c >= 'N' && c <= 'Z') || (c >= 'n' && c <= 'z'))
+{
+buffer[count] = c - 13;
+}
+else
+{
+buffer[count] = c;
+}
+count++;
+}
 
 handle_field_width(&count, buffer, field_width, minus_flag, zero_flag);
 

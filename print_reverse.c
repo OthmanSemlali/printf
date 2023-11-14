@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_char - prints a character
+ * print_reverse - prints a string in reverse
  * @args: list of arguments
  * @buffer: buffer to write to
  * @flags: flags for the format
@@ -12,27 +12,29 @@
  * from the string
  * Return: number of characters printed
 */
-
-int print_char(va_list args, char *buffer, char *flags,
+int print_reverse(va_list args, char *buffer, char *flags,
 		char length_modifier, int field_width, int precision)
 {
+(void)flags;
 (void)length_modifier;
 (void)precision;
-char c;
+
+char *str;
+int length;
 int count;
-int plus_flag;
-int space_flag;
-int zero_flag;
-int minus_flag;
-int hash_flag;
+int i;
+int plus_flag, space_flag, zero_flag, minus_flag, hash_flag;
 
 parse_flags_and_set(flags, &plus_flag, &space_flag,
 		&zero_flag, &minus_flag, &hash_flag);
 
-c = va_arg(args, int);
+str = va_arg(args, char *);
+length = _str_len(str);
 count = 0;
-
-buffer[count++] = c;
+for (i = 0; i < length; i++)
+{
+buffer[count++] = str[length - i - 1];
+}
 
 handle_field_width(&count, buffer, field_width, minus_flag, zero_flag);
 

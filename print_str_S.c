@@ -1,50 +1,50 @@
 #include "main.h"
 
-
 /**
- * print_octal - prints an octal
+ * print_str_S - prints a string
  * @args: list of arguments
  * @buffer: buffer to write to
  * @flags: flags for the format
  * @length_modifier: length modifier for the format
+ * (not used in this function)
  * @field_width: minimum number of characters to output
  * @precision: maximum number of characters to be printed
  * from the string
  * Return: number of characters printed
 */
-int print_octal(va_list args, char *buffer,
+int print_str_S(va_list args, char *buffer,
 		char *flags, char length_modifier,
 		int field_width, int precision)
 {
-unsigned long num;
-char num_buffer[33];
+(void)length_modifier;
 char *str;
 int count;
-int plus_flag;
-int space_flag;
-int zero_flag;
-int minus_flag;
-int hash_flag;
+int plus_flag, space_flag, zero_flag, minus_flag, hash_flag;
 
 parse_flags_and_set(flags, &plus_flag,
-		&space_flag, &zero_flag,
-		&minus_flag, &hash_flag);
+		&space_flag, &zero_flag, &minus_flag, &hash_flag);
 
-num = extract_number(args, length_modifier);
-itoa_octal(num, num_buffer);
-str = num_buffer;
+str = va_arg(args, char *);
 count = 0;
-
-if (hash_flag && num != 0)
+if (str == NULL)
 {
-buffer[count++] = '0';
+str = "(null)";
 }
 
-while (*str != '\0' || count < precision)
+while (*str && (precision < 0 || count < precision))
 {
-buffer[count] = *str;
+if (*str < 32 || *str >= 127)
+{
+buffer[count++] = '\\';
+buffer[count++] = 'x';
+buffer[count++] = "0123456789ABCDEF"[(*str >> 4) & 0xF];
+buffer[count++] = "0123456789ABCDEF"[*str & 0xF];
+}
+else
+{
+buffer[count++] = *str;
+}
 str++;
-count++;
 }
 
 handle_field_width(&count, buffer, field_width, minus_flag, zero_flag);
