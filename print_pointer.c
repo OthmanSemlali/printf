@@ -35,7 +35,6 @@ return (0);
 int print_pointer(va_list args, char *buffer, char *flags,
 		char length_modifier, int field_width, int precision)
 {
-(void)length_modifier;
 void *ptr;
 unsigned char *address_bytes;
 int count;
@@ -47,6 +46,8 @@ int space_flag;
 int zero_flag;
 int minus_flag;
 int hash_flag;
+
+(void)length_modifier;
 
 parse_flags_and_set(flags, &plus_flag, &space_flag,
 		&zero_flag, &minus_flag, &hash_flag);

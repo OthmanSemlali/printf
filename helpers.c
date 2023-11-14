@@ -47,6 +47,7 @@ int _itoa(int n, char s[])
 {
 int i;
 int sign;
+int len;
 
 i = 0;
 sign = n;
@@ -62,7 +63,7 @@ s[i++] = '-';
 }
 s[i] = '\0';
 
-int len = _reverse(s);
+len = _reverse(s);
 
 return (len);
 }

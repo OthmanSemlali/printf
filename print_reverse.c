@@ -15,15 +15,15 @@
 int print_reverse(va_list args, char *buffer, char *flags,
 		char length_modifier, int field_width, int precision)
 {
-(void)flags;
-(void)length_modifier;
-(void)precision;
-
 char *str;
 int length;
 int count;
 int i;
 int plus_flag, space_flag, zero_flag, minus_flag, hash_flag;
+
+(void)flags;
+(void)length_modifier;
+(void)precision;
 
 parse_flags_and_set(flags, &plus_flag, &space_flag,
 		&zero_flag, &minus_flag, &hash_flag);

@@ -33,7 +33,6 @@ int print_binary(va_list args, char *buffer, char *flags,
 		char length_modifier,
 		int field_width, int precision)
 {
-(void)length_modifier;
 unsigned int num;
 char num_buffer[33];
 int i;
@@ -45,6 +44,8 @@ int minus_flag;
 int hash_flag;
 int num_length;
 int j;
+
+(void)length_modifier;
 
 parse_flags_and_set(flags, &plus_flag, &space_flag,
 		&zero_flag, &minus_flag, &hash_flag);

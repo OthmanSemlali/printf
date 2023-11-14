@@ -13,9 +13,9 @@ handler_func_t get_print_func(char s,
 		int handlers_count,
 		char length_modifier)
 {
-(void)length_modifier;
-
 int i;
+
+(void)length_modifier;
 
 for (i = 0; i < handlers_count; i++)
 {

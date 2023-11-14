@@ -16,8 +16,6 @@
 int print_char(va_list args, char *buffer, char *flags,
 		char length_modifier, int field_width, int precision)
 {
-(void)length_modifier;
-(void)precision;
 char c;
 int count;
 int plus_flag;
@@ -25,6 +23,9 @@ int space_flag;
 int zero_flag;
 int minus_flag;
 int hash_flag;
+
+(void)length_modifier;
+(void)precision;
 
 parse_flags_and_set(flags, &plus_flag, &space_flag,
 		&zero_flag, &minus_flag, &hash_flag);

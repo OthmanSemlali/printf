@@ -71,9 +71,9 @@ int print_hex_lower(va_list args,
 		char *buffer, char *flags,
 		char length_modifier, int field_width, int precision)
 {
-(void)length_modifier;
 int count;
 
+(void)length_modifier;
 count = print_hex(args, buffer, flags, 0,
 		length_modifier, field_width, precision);
 return (count);
@@ -92,8 +92,9 @@ return (count);
 int print_hex_upper(va_list args, char *buffer, char *flags,
 		char length_modifier, int field_width, int precision)
 {
-(void)length_modifier;
 int count;
+
+(void)length_modifier;
 
 count = print_hex(args, buffer, flags, 1,
 		length_modifier, field_width, precision);
